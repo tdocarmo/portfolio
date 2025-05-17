@@ -35,8 +35,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <footer className="w-full py-4 text-center text-sm text-foreground/60 bg-background border-t border-foreground/10">
+              © {new Date().getFullYear()} Toni Do Carmo. All Rights Reserved.
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>

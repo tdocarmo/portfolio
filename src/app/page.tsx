@@ -9,7 +9,7 @@ export default function Home() {
         {/* Section d'accueil épurée pour portfolio moderne */}
         <div className="flex flex-col items-center justify-center py-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">Bienvenue sur mon portfolio</h1>
-          <p className="text-lg text-foreground/80 text-center max-w-xl">Je suis [Votre Nom], développeur web passionné par la création d'expériences numériques élégantes et performantes.</p>
+          <p className="text-lg text-foreground/80 text-center max-w-xl">Je suis Toni Do Carmo, développeur web passionné par la création d'expériences numériques élégantes et performantes.</p>
         </div>
       </section>
       {/* Mon Profil */}
@@ -27,10 +27,6 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-4">Contact</h2>
         <p className="text-lg text-foreground/80">Formulaire ou informations de contact. (À personnaliser)</p>
       </section>
-      {/* Footer épuré */}
-      <footer className="row-start-3 flex flex-wrap items-center justify-center py-4 text-sm text-foreground/60">
-        © {new Date().getFullYear()} [Votre Nom]. Tous droits réservés.
-      </footer>
     </div>
   );
 }
