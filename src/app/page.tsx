@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ProfilTabs } from "@/components/ProfilTabs";
+import React from "react";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -26,7 +28,7 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="w-full max-w-3xl mx-auto py-24 scroll-mt-24">
         <h2 className="text-3xl font-bold mb-4">Contact</h2>
-        <p className="text-lg text-foreground/80">Formulaire ou informations de contact. (À personnaliser)</p>
+        <ContactForm />
       </section>
     </div>
   );
