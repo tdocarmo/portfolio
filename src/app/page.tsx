@@ -6,9 +6,6 @@ export default function Home() {
     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {/* Accueil */}
       <section id="accueil" className="w-full flex flex-col items-center gap-8 scroll-mt-24">
-        <header className="w-full flex justify-end">
-          <ThemeSwitcher />
-        </header>
         {/* Section d'accueil épurée pour portfolio moderne */}
         <div className="flex flex-col items-center justify-center py-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">Bienvenue sur mon portfolio</h1>

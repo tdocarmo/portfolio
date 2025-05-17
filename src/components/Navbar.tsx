@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const navItems = [
   { label: "Accueil", id: "accueil" },
@@ -37,6 +38,7 @@ export function Navbar() {
           ))}
         </ul>
         <div className="flex items-center gap-2 md:absolute md:right-4 md:top-1/2 md:-translate-y-1/2">
+          <ThemeSwitcher />
           {/* Burger menu for mobile */}
           <button
             className="md:hidden p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
