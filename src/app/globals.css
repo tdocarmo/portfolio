@@ -18,3 +18,21 @@ body {
     --font-geist-sans
   ); /* Utilise la police Geist Sans par défaut */
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.3s ease;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
