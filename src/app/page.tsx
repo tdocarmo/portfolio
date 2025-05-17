@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ProfilTabs } from "@/components/ProfilTabs";
 import React from "react";
 import ContactForm from "@/components/ContactForm";
@@ -12,7 +10,7 @@ export default function Home() {
         {/* Section d'accueil épurée pour portfolio moderne */}
         <div className="flex flex-col items-center justify-center py-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">Bienvenue sur mon portfolio</h1>
-          <p className="text-lg text-foreground/80 text-center max-w-xl">Je suis Toni Do Carmo, développeur web passionné par la création d'expériences numériques élégantes et performantes.</p>
+          <p className="text-lg text-foreground/80 text-center max-w-xl">Je suis Toni Do Carmo, développeur web passionné par la création d&apos;expériences numériques élégantes et performantes.</p>
         </div>
       </section>
       {/* Mon Profil */}

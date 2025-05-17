@@ -31,7 +31,7 @@ export default function ContactForm() {
         setStatus('error');
         setError(result.error || "Erreur lors de l'envoi du message.");
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
       setError("Erreur réseau ou serveur.");
     }
@@ -58,4 +58,4 @@ export default function ContactForm() {
       {status==='error' && <p className="text-red-600 text-center mt-2">{error}</p>}
     </form>
   );
-} 
+}

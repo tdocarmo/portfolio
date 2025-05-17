@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
@@ -70,4 +69,4 @@ export function Navbar() {
 
 // Animation utilitaire (à ajouter dans globals.css si besoin)
 // .animate-fade-in-down { animation: fadeInDown 0.3s ease; }
-// @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } } 
+// @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
