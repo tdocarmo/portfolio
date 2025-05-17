@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { ProfilTabs } from "@/components/ProfilTabs";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
       </section>
       {/* Mon Profil */}
       <section id="profil" className="w-full max-w-3xl mx-auto py-24 scroll-mt-24">
-        <h2 className="text-3xl font-bold mb-4">Mon Profil</h2>
-        <p className="text-lg text-foreground/80">Présentation rapide de votre parcours, compétences et valeurs. (À personnaliser)</p>
+        <h2 className="text-3xl font-bold mb-8 text-center">Mon Profil</h2>
+        <ProfilTabs />
       </section>
       {/* Mes Projets */}
       <section id="projets" className="w-full max-w-3xl mx-auto py-24 scroll-mt-24">
