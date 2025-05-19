@@ -10,26 +10,22 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('loading');
     setError(null);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      message: formData.get('message') as string,
-    };
+
     try {
-      const res = await fetch('/api/contact', {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      
+      const response = await fetch('https://formsubmit.co/toni.docarmo@live.fr', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: formData,
       });
-      const result = await res.json();
-      if (res.ok) {
+
+      if (response.ok) {
         setStatus('success');
         form.reset();
       } else {
         setStatus('error');
-        setError(result.error || "Erreur lors de l'envoi du message.");
+        setError("Erreur lors de l'envoi du message.");
       }
     } catch {
       setStatus('error');
@@ -54,7 +50,7 @@ export default function ContactForm() {
       <button type="submit" disabled={status==='loading'} className="bg-primary text-background font-semibold py-2 px-6 rounded hover:bg-primary/90 transition disabled:opacity-60">
         {status==='loading' ? 'Envoi en cours...' : 'Envoyer'}
       </button>
-      {status==='success' && <p className="text-green-600 text-center mt-2">Message envoyé avec succès !</p>}
+      {status==='success' && <p className="text-green-600 text-center mt-2">Message envoyé avec succès !</p>}
       {status==='error' && <p className="text-red-600 text-center mt-2">{error}</p>}
     </form>
   );
