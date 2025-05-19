@@ -1,0 +1,16 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://toni-docarmo.vercel.app/sitemap.xml
+
+# Empêcher l'indexation des fichiers de développement
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Autoriser l'indexation des pages principales
+Allow: /profil
+Allow: /projets
+Allow: /contact 
