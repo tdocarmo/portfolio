@@ -1,68 +1,68 @@
 "use client";
 
-import { useState } from "react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
-
-const navItems = [
-  { label: "Accueil", id: "accueil" },
-  { label: "Mon Profil", id: "profil" },
-  { label: "Mes Projets", id: "projets" },
-  { label: "Contact", id: "contact" },
-];
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { FaSun, FaMoon, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const handleScroll = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
-    }
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur transition-colors">
-      <div className="max-w-5xl mx-auto flex flex-col items-center justify-center px-4 py-2">
-        <ul className="hidden md:flex gap-6 justify-center">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <button
-                className="relative px-2 py-1 font-medium text-foreground hover:text-primary transition-colors duration-200 focus:outline-none"
-                onClick={() => handleScroll(item.id)}
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-center gap-2 md:absolute md:right-4 md:top-1/2 md:-translate-y-1/2">
-          <ThemeSwitcher />
-          {/* Burger menu for mobile */}
-          <button
-            className="md:hidden p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Ouvrir le menu"
-          >
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6"><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
-          </button>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-foreground/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo et nom */}
+          <div className="flex items-center">
+            <span className="text-xl font-bold text-foreground">Toni Do Carmo</span>
+          </div>
+
+          {/* Liens de navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#accueil" className="text-foreground/80 hover:text-foreground transition">Accueil</a>
+            <a href="#profil" className="text-foreground/80 hover:text-foreground transition">Profil</a>
+            <a href="#projets" className="text-foreground/80 hover:text-foreground transition">Projets</a>
+            <a href="#contact" className="text-foreground/80 hover:text-foreground transition">Contact</a>
+          </div>
+
+          {/* Liens sociaux et thème */}
+          <div className="flex items-center space-x-4">
+            <a
+              href="https://github.com/tdocarmo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/80 hover:text-foreground transition"
+              aria-label="GitHub"
+            >
+              <FaGithub className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/toni-do-carmo-ferreira/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/80 hover:text-foreground transition"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin className="w-5 h-5" />
+            </a>
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg text-foreground/80 hover:text-foreground transition"
+              aria-label="Changer de thème"
+            >
+              {theme === "dark" ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
-      {/* Mobile menu */}
-      {menuOpen && (
-        <ul className="md:hidden flex flex-col gap-2 px-4 pb-4 bg-background/95 animate-fade-in-down">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <button
-                className="w-full text-left px-2 py-2 font-medium text-foreground hover:text-primary transition-colors duration-200"
-                onClick={() => handleScroll(item.id)}
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
     </nav>
   );
 }
