@@ -5,11 +5,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-4 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
       {/* Accueil */}
-      <section id="accueil" className="w-full flex flex-col items-center gap-8 scroll-mt-24">
+      <section id="accueil" className="w-full flex flex-col items-center gap-8 scroll-mt-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20 min-h-screen">
         {/* Section d'accueil avec texte à gauche et photo à droite */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-24">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-32 px-4 sm:px-8">
           <div className="flex flex-col items-start gap-12 max-w-xl ml-1">
             <div className="flex items-center gap-2 border-[0.5px] border-blue-500 rounded-2xl px-4 py-2">
               <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </section>
       {/* Mon Profil */}
-      <section id="profil" className="w-full max-w-3xl mx-auto py-24 scroll-mt-24">
+      <section id="profil" className="w-full max-w-3xl mx-auto py-32 scroll-mt-24 mt-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Mon Profil</h2>
         <ProfilTabs />
       </section>
