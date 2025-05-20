@@ -22,7 +22,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo et nom */}
           <div className="flex items-center ml-1">
-            <span className="text-xl font-bold text-foreground">Toni Do Carmo</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent hover:from-blue-600 hover:to-blue-800 transition-all duration-300">Toni Do Carmo</span>
           </div>
 
           {/* Liens de navigation */}

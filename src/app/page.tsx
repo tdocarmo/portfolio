@@ -11,7 +11,7 @@ export default function Home() {
         {/* Section d'accueil avec texte à gauche et photo à droite */}
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-16">
           <div className="flex flex-col items-start gap-6 max-w-xl ml-1">
-            <h1 className="text-4xl sm:text-5xl font-bold text-left">Développeur Full-Stack</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-left bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent hover:from-blue-600 hover:to-blue-800 transition-all duration-300">Développeur Full-Stack</h1>
             <p className="text-lg text-foreground/80 text-left">Passionné par le développement, je construis des applications qui répondent à des besoins précis. Mon objectif est de faire en sorte que la technologie serve un but clair.</p>
           </div>
           <div className="w-full md:w-1/4 aspect-square relative rounded-lg overflow-hidden">
