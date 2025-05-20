@@ -1,64 +1,54 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import { BsGithub, BsLinkedin, BsSun, BsMoon } from "react-icons/bs";
 
-export function Navbar() {
-  const [mounted, setMounted] = useState(false);
+export default function Navbar() {
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-background/80 backdrop-blur-sm border-b border-blue-200/30 dark:border-blue-800/30">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo et nom */}
-          <div className="flex items-center ml-1">
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent hover:from-blue-600 hover:to-blue-800 transition-all duration-300">Toni Do Carmo</span>
-          </div>
-
-          {/* Liens de navigation */}
-          <div className="hidden md:flex items-center space-x-12 ml-auto mr-8">
-            <a href="#accueil" className="text-foreground/80 hover:text-foreground transition font-normal">Accueil</a>
-            <a href="#profil" className="text-foreground/80 hover:text-foreground transition font-normal">Profil</a>
-            <a href="#projets" className="text-foreground/80 hover:text-foreground transition font-normal">Projets</a>
-            <a href="#contact" className="text-foreground/80 hover:text-foreground transition font-normal">Contact</a>
-          </div>
-
-          {/* Liens sociaux et thème */}
-          <div className="flex items-center space-x-6 border-l border-blue-200/30 dark:border-blue-800/30 pl-8">
+    <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center">
+        <div className="mr-4 flex">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <span className="font-bold text-primary">Toni Do Carmo</span>
+          </Link>
+        </div>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <nav className="flex items-center space-x-6">
+            <Link href="#projets" className="text-sm font-medium transition-colors hover:text-primary">
+              Projets
+            </Link>
+            <Link href="#profil" className="text-sm font-medium transition-colors hover:text-primary">
+              Profil
+            </Link>
+            <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">
+              Contact
+            </Link>
+          </nav>
+          <div className="flex items-center space-x-4">
             <a
               href="https://github.com/tdocarmo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/60 hover:text-foreground transition"
-              aria-label="GitHub"
+              className="text-foreground/60 hover:text-foreground transition-colors"
             >
-              <BsGithub className="w-6 h-6" />
+              <BsGithub className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/toni-do-carmo-ferreira/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/60 hover:text-foreground transition"
-              aria-label="LinkedIn"
+              className="text-foreground/60 hover:text-foreground transition-colors"
             >
-              <BsLinkedin className="w-6 h-6" />
+              <BsLinkedin className="h-5 w-5" />
             </a>
             <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg text-foreground/60 hover:text-foreground transition"
-              aria-label="Changer de thème"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
             >
-              {theme === "dark" ? <BsSun className="w-6 h-6" /> : <BsMoon className="w-6 h-6" />}
+              {theme === 'dark' ? <BsSun className="h-5 w-5" /> : <BsMoon className="h-5 w-5" />}
             </button>
           </div>
         </div>
