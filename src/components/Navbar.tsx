@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { FaSun, FaMoon, FaGithub, FaLinkedin } from "react-icons/fa";
 import { BsGithub, BsLinkedin, BsSun, BsMoon } from "react-icons/bs";
 
 export function Navbar() {
