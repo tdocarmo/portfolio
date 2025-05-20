@@ -2,69 +2,104 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 255 255 255;
-  --foreground: 23 23 23;
-  --primary: 59 130 246;
-  --primary-foreground: 255 255 255;
-  --secondary: 241 245 249;
-  --secondary-foreground: 15 23 42;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --accent: 241 245 249;
-  --accent-foreground: 15 23 42;
-  --border: 226 232 240;
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 23 23 23;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 241 245 249;
+    --accent-foreground: 15 23 42;
+    --border: 226 232 240;
+  }
+
+  .dark {
+    --background: 10 10 10;
+    --foreground: 250 250 250;
+    --primary: 96 165 250;
+    --primary-foreground: 15 23 42;
+    --secondary: 30 41 59;
+    --secondary-foreground: 255 255 255;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --accent: 30 41 59;
+    --accent-foreground: 255 255 255;
+    --border: 30 41 59;
+  }
 }
 
-.dark {
-  --background: 10 10 10;
-  --foreground: 250 250 250;
-  --primary: 96 165 250;
-  --primary-foreground: 15 23 42;
-  --secondary: 30 41 59;
-  --secondary-foreground: 255 255 255;
-  --muted: 30 41 59;
-  --muted-foreground: 148 163 184;
-  --accent: 30 41 59;
-  --accent-foreground: 255 255 255;
-  --border: 30 41 59;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+  }
 }
 
-body {
-  background-color: rgb(var(--background));
-  color: rgb(var(--foreground));
+/* Section styles */
+.section {
+  @apply py-16 md:py-24;
 }
 
-html {
-  scroll-behavior: smooth;
+.section-content {
+  @apply container mx-auto px-4;
 }
 
-.animate-fade-in-down {
-  animation: fadeInDown 0.3s ease;
+/* Card styles */
+.card {
+  @apply bg-background rounded-lg shadow-sm border border-border/40 hover:shadow-md transition-shadow duration-300;
 }
 
-@keyframes fadeInDown {
+/* Gradient backgrounds */
+.gradient-bg {
+  @apply bg-gradient-to-b from-background to-background/95;
+}
+
+/* Subtle separators */
+.section-divider {
+  @apply h-px bg-border/40 my-8;
+}
+
+/* Animation classes */
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.slide-up {
+  @apply animate-slide-up;
+}
+
+/* Custom animations */
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    transform: none;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .animate-fade-in {
-  animation: fadeInTab 0.3s ease;
+  animation: fade-in 0.5s ease-out;
 }
 
-@keyframes fadeInTab {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
 }
