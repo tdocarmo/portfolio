@@ -9,12 +9,26 @@ export default function Home() {
       {/* Accueil */}
       <section id="accueil" className="w-full flex flex-col items-center gap-8 scroll-mt-24">
         {/* Section d'accueil avec texte à gauche et photo à droite */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-16">
-          <div className="flex flex-col items-start gap-6 max-w-xl ml-1">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-24">
+          <div className="flex flex-col items-start gap-12 max-w-xl ml-1">
             <h1 className="text-4xl sm:text-5xl font-bold text-left bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent hover:from-blue-600 hover:to-blue-800 transition-all duration-300">Développeur Full-Stack</h1>
             <p className="text-lg text-foreground/80 text-left">Passionné par le développement, je construis des applications qui répondent à des besoins précis. Mon objectif est de faire en sorte que la technologie serve un but clair.</p>
+            <div className="flex gap-4 mt-4">
+              <a 
+                href="#projets" 
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                Voir mes projets
+              </a>
+              <a 
+                href="#contact" 
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                Me contacter
+              </a>
+            </div>
           </div>
-          <div className="w-full md:w-1/4 aspect-square relative rounded-lg overflow-hidden">
+          <div className="w-full md:w-1/4 aspect-square relative rounded-lg overflow-hidden mt-8">
             <Image
               src="/images/profile.jpg"
               alt="Toni Do Carmo"
