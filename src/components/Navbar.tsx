@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { FaSun, FaMoon, FaGithub, FaLinkedin } from "react-icons/fa";
+import { BsGithub, BsLinkedin, BsSun, BsMoon } from "react-icons/bs";
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -26,39 +27,39 @@ export function Navbar() {
           </div>
 
           {/* Liens de navigation */}
-          <div className="hidden md:flex items-center space-x-8 ml-auto mr-4">
-            <a href="#accueil" className="text-foreground/80 hover:text-foreground transition">Accueil</a>
-            <a href="#profil" className="text-foreground/80 hover:text-foreground transition">Profil</a>
-            <a href="#projets" className="text-foreground/80 hover:text-foreground transition">Projets</a>
-            <a href="#contact" className="text-foreground/80 hover:text-foreground transition">Contact</a>
+          <div className="hidden md:flex items-center space-x-12 ml-auto mr-8">
+            <a href="#accueil" className="text-foreground/80 hover:text-foreground transition font-normal">Accueil</a>
+            <a href="#profil" className="text-foreground/80 hover:text-foreground transition font-normal">Profil</a>
+            <a href="#projets" className="text-foreground/80 hover:text-foreground transition font-normal">Projets</a>
+            <a href="#contact" className="text-foreground/80 hover:text-foreground transition font-normal">Contact</a>
           </div>
 
           {/* Liens sociaux et thème */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6 border-l border-blue-200/30 dark:border-blue-800/30 pl-8">
             <a
               href="https://github.com/tdocarmo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-foreground transition"
+              className="text-foreground/60 hover:text-foreground transition"
               aria-label="GitHub"
             >
-              <FaGithub className="w-5 h-5" />
+              <BsGithub className="w-6 h-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/toni-do-carmo-ferreira/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-foreground transition"
+              className="text-foreground/60 hover:text-foreground transition"
               aria-label="LinkedIn"
             >
-              <FaLinkedin className="w-5 h-5" />
+              <BsLinkedin className="w-6 h-6" />
             </a>
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg text-foreground/80 hover:text-foreground transition"
+              className="p-2 rounded-lg text-foreground/60 hover:text-foreground transition"
               aria-label="Changer de thème"
             >
-              {theme === "dark" ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+              {theme === "dark" ? <BsSun className="w-6 h-6" /> : <BsMoon className="w-6 h-6" />}
             </button>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { ProfilTabs } from "@/components/ProfilTabs";
 import React from "react";
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
+import { TechScroller } from "@/components/TechScroller";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
               <span className="text-blue-500 font-medium">Disponible pour de nouveaux projets</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-left bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent hover:from-blue-600 hover:to-blue-800 transition-all duration-300">Développeur Full-Stack</h1>
+            <TechScroller />
             <p className="text-lg text-foreground/80 text-left">Passionné par le développement, je construis des applications qui répondent à des besoins précis. Mon objectif est de faire en sorte que la technologie serve un but clair.</p>
             <div className="flex gap-4 mt-4">
               <a 
