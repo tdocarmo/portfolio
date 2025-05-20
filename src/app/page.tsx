@@ -1,16 +1,28 @@
 import { ProfilTabs } from "@/components/ProfilTabs";
 import React from "react";
 import ContactForm from "@/components/ContactForm";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-4 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
       {/* Accueil */}
       <section id="accueil" className="w-full flex flex-col items-center gap-8 scroll-mt-24">
-        {/* Section d'accueil épurée pour portfolio moderne */}
-        <div className="flex flex-col items-center justify-center py-16">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">Bienvenue sur mon portfolio</h1>
-          <p className="text-lg text-foreground/80 text-center max-w-xl">Je suis Toni Do Carmo, développeur web passionné par la création d&apos;expériences numériques élégantes et performantes.</p>
+        {/* Section d'accueil avec texte à gauche et photo à droite */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12 py-16">
+          <div className="flex flex-col items-start gap-6 max-w-xl ml-1">
+            <h1 className="text-4xl sm:text-5xl font-bold text-left">Développeur Full-Stack</h1>
+            <p className="text-lg text-foreground/80 text-left">Passionné par le développement, je construis des applications qui répondent à des besoins précis. Mon objectif est de faire en sorte que la technologie serve un but clair.</p>
+          </div>
+          <div className="w-full md:w-1/4 aspect-square relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/profile.jpg"
+              alt="Toni Do Carmo"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
       {/* Mon Profil */}

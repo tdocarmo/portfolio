@@ -18,15 +18,15 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-foreground/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo et nom */}
-          <div className="flex items-center">
+          <div className="flex items-center ml-1">
             <span className="text-xl font-bold text-foreground">Toni Do Carmo</span>
           </div>
 
           {/* Liens de navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 ml-auto mr-4">
             <a href="#accueil" className="text-foreground/80 hover:text-foreground transition">Accueil</a>
             <a href="#profil" className="text-foreground/80 hover:text-foreground transition">Profil</a>
             <a href="#projets" className="text-foreground/80 hover:text-foreground transition">Projets</a>
