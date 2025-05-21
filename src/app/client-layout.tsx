@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SectionProvider } from "@/context/SectionContext";
+import { Toaster } from "sonner";
 
 export default function ClientLayout({
   children,
@@ -26,6 +27,7 @@ export default function ClientLayout({
             © {new Date().getFullYear()} Toni Do Carmo. All Rights Reserved.
           </footer>
         </div>
+        <Toaster richColors position="top-center" />
       </SectionProvider>
     </ThemeProvider>
   );

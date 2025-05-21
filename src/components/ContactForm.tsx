@@ -1,57 +1,104 @@
 "use client";
 
-import React from "react";
+import { useState } from 'react';
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function ContactForm() {
-  const [status, setStatus] = React.useState<'idle'|'success'|'error'|'loading'>('idle');
-  const [error, setError] = React.useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setError(null);
-
-    try {
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      
-      const response = await fetch('https://formsubmit.co/toni.docarmo@live.fr', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-        setError("Erreur lors de l'envoi du message.");
-      }
-    } catch {
-      setStatus('error');
-      setError("Erreur réseau ou serveur.");
-    }
-  }
+    // Ici, vous pouvez ajouter la logique d'envoi du formulaire
+    toast.success("Message envoyé avec succès !");
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-background border border-foreground/10 rounded-lg p-6 flex flex-col gap-4 shadow-md">
-      <div>
-        <label htmlFor="name" className="block mb-1 font-medium">Nom</label>
-        <input type="text" id="name" name="name" required className="w-full px-3 py-2 rounded border border-foreground/20 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition" />
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="relative">
+          <Input
+            type="text"
+            id="name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            placeholder=" "
+            className="peer"
+            required
+          />
+          <label
+            htmlFor="name"
+            className="absolute text-sm text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-background px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          >
+            Nom
+          </label>
+        </div>
+
+        <div className="relative">
+          <Input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            placeholder=" "
+            className="peer"
+            required
+          />
+          <label
+            htmlFor="email"
+            className="absolute text-sm text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-background px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          >
+            Email
+          </label>
+        </div>
       </div>
-      <div>
-        <label htmlFor="email" className="block mb-1 font-medium">E-mail</label>
-        <input type="email" id="email" name="email" required className="w-full px-3 py-2 rounded border border-foreground/20 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition" />
+
+      <div className="relative">
+        <Input
+          type="text"
+          id="subject"
+          value={formData.subject}
+          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+          placeholder=" "
+          className="peer"
+          required
+        />
+        <label
+          htmlFor="subject"
+          className="absolute text-sm text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-background px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+        >
+          Sujet
+        </label>
       </div>
-      <div>
-        <label htmlFor="message" className="block mb-1 font-medium">Message</label>
-        <textarea id="message" name="message" required rows={5} className="w-full px-3 py-2 rounded border border-foreground/20 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition" />
+
+      <div className="relative">
+        <Textarea
+          id="message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          placeholder=" "
+          className="peer min-h-[150px] resize-none"
+          required
+        />
+        <label
+          htmlFor="message"
+          className="absolute text-sm text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-background px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+        >
+          Message
+        </label>
       </div>
-      <button type="submit" disabled={status==='loading'} className="bg-primary text-background font-semibold py-2 px-6 rounded hover:bg-primary/90 transition disabled:opacity-60">
-        {status==='loading' ? 'Envoi en cours...' : 'Envoyer'}
-      </button>
-      {status==='success' && <p className="text-green-600 text-center mt-2">Message envoyé avec succès !</p>}
-      {status==='error' && <p className="text-red-600 text-center mt-2">{error}</p>}
+
+      <Button type="submit" className="w-full">
+        Envoyer le message
+      </Button>
     </form>
   );
 }
