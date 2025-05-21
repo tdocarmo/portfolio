@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SectionProvider } from "@/context/SectionContext";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function ClientLayout({
   children,
@@ -28,6 +29,7 @@ export default function ClientLayout({
           </footer>
         </div>
         <Toaster richColors position="top-center" />
+        <Analytics />
       </SectionProvider>
     </ThemeProvider>
   );
