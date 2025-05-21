@@ -20,8 +20,8 @@ export function TechScroller() {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % technologies.length);
         setIsVisible(true);
-      }, 300); // Transition plus lente pour un effet plus doux
-    }, 2000); // Changement toutes les 2 secondes
+      }, 500); // Augmentation du délai pour une transition plus douce
+    }, 3000); // Augmentation du temps d'affichage de chaque technologie
 
     return () => clearInterval(interval);
   }, []);
@@ -32,7 +32,7 @@ export function TechScroller() {
         {technologies.map((tech, index) => (
           <span
             key={tech}
-            className={`absolute transition-all duration-800 ease-in-out text-3xl font-semibold
+            className={`absolute transition-all duration-1000 ease-in-out text-3xl font-semibold
               ${index === currentIndex 
                 ? isVisible
                   ? 'opacity-100 translate-y-0'
