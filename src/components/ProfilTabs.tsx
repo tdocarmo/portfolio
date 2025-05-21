@@ -78,13 +78,55 @@ const tabContent: Record<string, React.ReactNode> = {
     </div>
   ),
   experience: (
-    <div>
-      <h3 className="text-xl font-semibold mb-2">Expérience</h3>
-      <ul className="list-disc pl-5 space-y-1 text-foreground/80">
-        <li>2023 — Développeur Frontend Freelance (React, Next.js, Tailwind)</li>
-        <li>2022 — Stage Développeur Web, Startup XYZ</li>
-        <li>2020-2021 — Projets personnels et contributions open source</li>
-      </ul>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <h3 className="text-xl font-semibold text-primary">Développeur Full-Stack (Projets de Formation & Collaboratifs)</h3>
+        <p className="text-foreground/80">Fin 2023 - Présent</p>
+      </div>
+
+      <div className="space-y-2">
+        <p className="text-foreground/80">Cette section met en lumière mon expérience pratique acquise au travers d'un cursus intensif et axé sur les projets, couvrant l'intégralité du cycle de développement logiciel.</p>
+      </div>
+
+      <div className="space-y-4">
+        <ul className="space-y-3">
+          <li className="flex items-start">
+            <span className="text-primary mr-2">•</span>
+            <div>
+              <span className="font-medium">Conception et Modélisation de Bases de Données</span>
+              <p className="text-foreground/80">Maîtrise des méthodes de conception (Merise : MCD, MLD, MPD), incluant la rédaction de dictionnaires de données et l'optimisation des structures pour la performance et la maintenabilité.</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="text-primary mr-2">•</span>
+            <div>
+              <span className="font-medium">Développement Backend Robuste</span>
+              <p className="text-foreground/80">Application des principes CRUD (Create, Read, Update, Delete) pour manipuler les données en base via des requêtes SQL et du code backend sécurisé. Conception et implémentation d'architectures multicouches (Présentation, Application/Métier, Accès aux Données, Base de Données), favorisant la séparation des responsabilités et la scalabilité.</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="text-primary mr-2">•</span>
+            <div>
+              <span className="font-medium">Spécification des Besoins et Méthodologies Agiles</span>
+              <p className="text-foreground/80">Rédaction de User Stories (User Story) pour définir les besoins fonctionnels du point de vue de l'utilisateur, facilitant la communication et la priorisation des fonctionnalités. Pratique des méthodologies agiles (Scrum), incluant le travail par sprints, la gestion du Backlog Produit et les réunions quotidiennes (Daily Scrum).</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="text-primary mr-2">•</span>
+            <div>
+              <span className="font-medium">Qualité Logicielle et Sécurité</span>
+              <p className="text-foreground/80">Intégration des bonnes pratiques de sécurisation des applications, validation des entrées et gestion des erreurs. Participation active à plus de 50 audits de code et revues de projet, garantissant la conformité aux standards et la robustesse du code.</p>
+            </div>
+          </li>
+          <li className="flex items-start">
+            <span className="text-primary mr-2">•</span>
+            <div>
+              <span className="font-medium">Collaboration et Outils</span>
+              <p className="text-foreground/80">Utilisation intensive de Git/GitHub pour le versionnement et le travail collaboratif. Familiarisation avec des outils de gestion de projet (Gitea, GitHub Projects) pour le suivi des User Stories.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   ),
   competences: (
@@ -101,7 +143,7 @@ const tabContent: Record<string, React.ReactNode> = {
 };
 
 export function ProfilTabs() {
-  const [active, setActive] = useState("formation");
+  const [active, setActive] = useState("competences");
 
   return (
     <div className="w-full">
