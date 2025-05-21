@@ -88,7 +88,7 @@ export default function Home() {
       </section>
 
       {/* Projets Section */}
-      <section id="projets" className="section bg-background">
+      <section id="projets" className="section bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20">
         <div className="section-content">
           <h2 className="text-3xl font-bold mb-4 text-primary">Mes Projets</h2>
           <p className="text-lg text-foreground/80">Quelques projets marquants, avec liens, images ou descriptions. (À personnaliser)</p>
