@@ -26,15 +26,18 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
-        <div className="mr-4 flex">
+        {/* Logo/Nom */}
+        <div className="flex items-center">
           <button 
             onClick={() => scrollToSection('hero')}
-            className="mr-6 flex items-center space-x-2"
+            className="flex items-center space-x-2"
           >
             <span className="text-lg font-bold text-primary dark:text-foreground/60">Toni Do Carmo</span>
           </button>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+
+        {/* Navigation Links & Social Icons */}
+        <div className="flex flex-1 items-center justify-end space-x-8">
           <nav className="flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('profil')}
@@ -55,12 +58,18 @@ export default function Navbar() {
               Contact
             </button>
           </nav>
+
+          {/* Séparateur vertical */}
+          <div className="h-6 w-px bg-border/40"></div>
+
+          {/* Social Links & Theme Toggle */}
           <div className="flex items-center space-x-4">
             <a
               href="https://github.com/tdocarmo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/60 hover:text-foreground transition-colors"
+              aria-label="GitHub Profile"
             >
               <BsGithub className="h-5 w-5" />
             </a>
@@ -69,12 +78,14 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/60 hover:text-foreground transition-colors"
+              aria-label="LinkedIn Profile"
             >
               <BsLinkedin className="h-5 w-5" />
             </a>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
+              aria-label="Toggle theme"
             >
               {theme === 'dark' ? <BsSun className="h-5 w-5" /> : <BsMoon className="h-5 w-5" />}
             </button>
