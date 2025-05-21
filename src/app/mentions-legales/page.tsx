@@ -8,6 +8,7 @@ export default function LegalNotice() {
           <h2 className="text-xl font-semibold text-primary">Éditeur du site</h2>
           <p>
             Ce site est édité par Toni Do Carmo, développeur web indépendant.
+            <br />
             Adresse : 14 rue Germaine et André Pican, 76800 Saint-Étienne-du-Rouvray.
           </p>
         </section>
