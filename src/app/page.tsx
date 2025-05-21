@@ -1,13 +1,47 @@
+"use client";
+
 import { TechScroller } from '@/components/TechScroller';
 import { ProfilTabs } from '@/components/ProfilTabs';
 import ContactForm from '@/components/ContactForm';
 import Image from 'next/image';
+import { useSection } from '@/context/SectionContext';
+import { useEffect } from 'react';
 
 export default function Home() {
+  const { setActiveSection } = useSection();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'profil', 'projets', 'contact'];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { top, bottom } = element.getBoundingClientRect();
+          if (top <= scrollPosition && bottom >= scrollPosition) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setActiveSection]);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="section bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20">
+      <section id="hero" className="section bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20">
         <div className="section-content">
           <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl mx-auto gap-8 pt-8 pb-16 md:pt-12 md:pb-32 px-4 sm:px-8">
             <div className="flex flex-col items-center md:items-start gap-6 max-w-2xl text-center md:text-left">
@@ -19,18 +53,18 @@ export default function Home() {
               <TechScroller />
               <p className="text-base md:text-lg text-foreground/80">Passionné par le développement, je construis des applications qui répondent à des besoins précis. Mon objectif est de faire en sorte que la technologie serve un but clair.</p>
               <div className="flex gap-4 mt-2">
-                <a 
-                  href="#projets" 
+                <button 
+                  onClick={() => scrollToSection('projets')}
                   className="px-6 py-3 bg-primary text-primary-foreground text-base font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Voir mes projets
-                </a>
-                <a 
-                  href="#contact" 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contact')}
                   className="px-6 py-3 bg-primary text-primary-foreground text-base font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Me contacter
-                </a>
+                </button>
               </div>
             </div>
             <div className="w-full md:w-1/3 aspect-square relative rounded-lg overflow-hidden mt-4 md:mt-0">

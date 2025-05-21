@@ -1,31 +1,59 @@
 "use client";
 
-import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { BsGithub, BsLinkedin, BsSun, BsMoon } from "react-icons/bs";
+import { useSection } from '@/context/SectionContext';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
+  const { setActiveSection } = useSection();
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 64; // hauteur de la navbar en pixels
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
+      <div className="container flex h-16 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+          <button 
+            onClick={() => scrollToSection('hero')}
+            className="mr-6 flex items-center space-x-2"
+          >
             <span className="text-lg font-bold text-primary dark:text-foreground/60">Toni Do Carmo</span>
-          </Link>
+          </button>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <nav className="flex items-center space-x-6">
-            <Link href="#projets" className="text-sm font-medium transition-colors hover:text-primary">
-              Projets
-            </Link>
-            <Link href="#profil" className="text-sm font-medium transition-colors hover:text-primary">
+          <nav className="flex items-center space-x-8">
+            <button 
+              onClick={() => scrollToSection('profil')}
+              className="text-base font-semibold transition-colors hover:text-primary"
+            >
               Profil
-            </Link>
-            <Link href="#contact" className="text-sm font-medium transition-colors hover:text-primary">
+            </button>
+            <button 
+              onClick={() => scrollToSection('projets')}
+              className="text-base font-semibold transition-colors hover:text-primary"
+            >
+              Projets
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-base font-semibold transition-colors hover:text-primary"
+            >
               Contact
-            </Link>
+            </button>
           </nav>
           <div className="flex items-center space-x-4">
             <a
