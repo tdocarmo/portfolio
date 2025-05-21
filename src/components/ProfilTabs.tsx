@@ -1,11 +1,66 @@
 "use client";
 
 import { useState } from "react";
+import { 
+  SiReact, SiNextdotjs, SiNodedotjs, SiTypescript, SiTailwindcss, 
+  SiDocker, SiSqlite, SiGo, SiHtml5, SiCss3, SiGit, SiGithub, 
+  SiLinux, SiVercel, SiRust, SiPython, SiExpress 
+} from "react-icons/si";
 
 const tabs = [
   { label: "Formation", id: "formation" },
   { label: "Expérience", id: "experience" },
   { label: "Compétences", id: "competences" },
+];
+
+const techStacks = [
+  {
+    title: "Full-Stack JavaScript/TypeScript",
+    subtitle: "Web Moderne et dynamique",
+    technologies: [
+      { icon: SiReact, name: "React" },
+      { icon: SiNextdotjs, name: "Next.js" },
+      { icon: SiNodedotjs, name: "Node.js" },
+      { icon: SiTypescript, name: "TypeScript" },
+      { icon: SiTailwindcss, name: "Tailwind CSS" },
+      { icon: SiDocker, name: "Docker" },
+      { icon: SiSqlite, name: "SQLite" }
+    ]
+  },
+  {
+    title: "Backend Go",
+    subtitle: "Performance et robustesse",
+    technologies: [
+      { icon: SiGo, name: "Go" },
+      { icon: SiSqlite, name: "SQLite" },
+      { icon: SiDocker, name: "Docker" }
+    ]
+  },
+  {
+    title: "Développement Web Fondamental",
+    technologies: [
+      { icon: SiHtml5, name: "HTML5" },
+      { icon: SiCss3, name: "CSS3" }
+    ]
+  },
+  {
+    title: "Outils DevOps & Collaboration",
+    technologies: [
+      { icon: SiDocker, name: "Docker" },
+      { icon: SiGit, name: "Git" },
+      { icon: SiGithub, name: "GitHub" },
+      { icon: SiLinux, name: "Linux" },
+      { icon: SiVercel, name: "Vercel" }
+    ]
+  },
+  {
+    title: "Programmation Système & Langages Alternatifs",
+    technologies: [
+      { icon: SiRust, name: "Rust" },
+      { icon: SiPython, name: "Python" },
+      { icon: SiExpress, name: "Express.js" }
+    ]
+  }
 ];
 
 const tabContent: Record<string, React.ReactNode> = {
@@ -130,14 +185,30 @@ const tabContent: Record<string, React.ReactNode> = {
     </div>
   ),
   competences: (
-    <div>
-      <h3 className="text-xl font-semibold mb-2">Compétences</h3>
-      <ul className="list-disc pl-5 space-y-1 text-foreground/80">
-        <li>JavaScript, TypeScript, React, Next.js</li>
-        <li>HTML, CSS, Tailwind CSS, Sass</li>
-        <li>Node.js, Express, MongoDB</li>
-        <li>Git, GitHub, Méthodes agiles</li>
-      </ul>
+    <div className="space-y-8">
+      {techStacks.map((stack, index) => (
+        <div key={index} className="space-y-4">
+          <div className="space-y-1">
+            <h3 className="text-xl font-semibold text-primary">{stack.title}</h3>
+            {stack.subtitle && (
+              <p className="text-foreground/80">{stack.subtitle}</p>
+            )}
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {stack.technologies.map((tech, techIndex) => (
+              <div
+                key={techIndex}
+                className="group flex flex-col items-center p-4 rounded-lg bg-background border border-border/40 hover:border-primary/40 transition-all duration-300 hover:shadow-md"
+              >
+                <tech.icon className="w-12 h-12 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <span className="mt-2 text-sm font-medium text-foreground/80 group-hover:text-primary transition-colors duration-300">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   ),
 };
