@@ -41,6 +41,19 @@
     color: rgb(var(--foreground));
   }
 
+  body {
+    background: linear-gradient(
+      45deg,
+      rgb(255, 255, 255),
+      rgb(249, 250, 251),
+      rgb(241, 245, 249),
+      rgb(249, 250, 251),
+      rgb(255, 255, 255)
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+  }
+
   .dark body {
     background: linear-gradient(
       45deg,

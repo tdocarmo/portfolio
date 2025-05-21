@@ -9,8 +9,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="section bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20">
         <div className="section-content">
-          <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl mx-auto gap-12 py-32 px-4 sm:px-8">
-            <div className="flex flex-col items-center md:items-start gap-12 max-w-xl text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl mx-auto gap-12 pt-8 pb-16 md:pt-12 md:pb-32 px-4 sm:px-8">
+            <div className="flex flex-col items-center md:items-start gap-8 max-w-xl text-center md:text-left">
               <div className="flex items-center gap-2 border border-primary/20 rounded-2xl px-4 py-2">
                 <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></div>
                 <span className="text-primary font-medium">Disponible pour de nouveaux projets</span>
