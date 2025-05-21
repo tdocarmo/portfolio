@@ -62,7 +62,7 @@ export default function Navbar() {
           {/* Séparateur vertical */}
           <div className="h-6 w-px bg-border/40"></div>
 
-          {/* Social Links & Theme Toggle */}
+          {/* Social Links & Theme Toggle & Language Selector */}
           <div className="flex items-center space-x-4">
             <a
               href="https://github.com/tdocarmo"
@@ -82,6 +82,39 @@ export default function Navbar() {
             >
               <BsLinkedin className="h-5 w-5" />
             </a>
+
+            {/* Séparateur vertical */}
+            <div className="h-6 w-px bg-border/40"></div>
+
+            {/* Language Selector */}
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => {/* TODO: Implement language change */}}
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
+                aria-label="Switch to French"
+              >
+                <span className="text-lg">🇫🇷</span>
+              </button>
+              <button
+                onClick={() => {/* TODO: Implement language change */}}
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
+                aria-label="Switch to English"
+              >
+                <span className="text-lg">🇬🇧</span>
+              </button>
+              <button
+                onClick={() => {/* TODO: Implement language change */}}
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
+                aria-label="Switch to Portuguese"
+              >
+                <span className="text-lg">🇵🇹</span>
+              </button>
+            </div>
+
+            {/* Séparateur vertical */}
+            <div className="h-6 w-px bg-border/40"></div>
+
+            {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9"
