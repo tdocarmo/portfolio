@@ -3,12 +3,21 @@
 import { useTheme } from 'next-themes';
 import { BsGithub, BsLinkedin, BsSun, BsMoon } from "react-icons/bs";
 import { useSection } from '@/context/SectionContext';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { setActiveSection } = useSection();
+  const pathname = usePathname();
 
   const scrollToSection = (sectionId: string) => {
+    if (pathname !== '/') {
+      // Si nous ne sommes pas sur la page d'accueil, naviguer d'abord vers la page d'accueil
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
@@ -28,12 +37,12 @@ export default function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo/Nom */}
         <div className="flex items-center">
-          <button 
-            onClick={() => scrollToSection('hero')}
+          <Link 
+            href="/"
             className="flex items-center space-x-2"
           >
             <span className="text-lg font-bold text-primary dark:text-foreground/60">Toni Do Carmo</span>
-          </button>
+          </Link>
         </div>
 
         {/* Navigation Links & Social Icons */}
