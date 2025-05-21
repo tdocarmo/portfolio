@@ -47,14 +47,14 @@ export function ProfilTabs() {
 
   return (
     <div className="w-full">
-      <div className="flex gap-2 mb-6 justify-center">
+      <div className="flex gap-4 mb-6 justify-center">
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`px-4 py-2 rounded-t transition-colors font-medium text-sm sm:text-base
+            className={`px-6 py-3 text-base font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg
               ${active === tab.id
-                ? "bg-primary text-background shadow"
-                : "bg-background text-foreground/70 hover:bg-foreground/10"}
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}
             `}
             onClick={() => setActive(tab.id)}
             aria-selected={active === tab.id}
