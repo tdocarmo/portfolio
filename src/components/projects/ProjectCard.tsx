@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             src={videoUrl}
             className="w-full h-full object-cover hover:object-contain transition-all duration-300"
             controls
-            preload="metadata"
+            preload="auto"
             controlsList="nodownload"
             playsInline
             muted
