@@ -1,30 +1,31 @@
 "use client";
 
+import Image from 'next/image';
 import { TechScroller } from '@/components/TechScroller';
 import { ProfilTabs } from '@/components/ProfilTabs';
 import ContactForm from '@/components/ContactForm';
-import Image from 'next/image';
-import { useSection } from '@/context/SectionContext';
+import ProjectsSection from '@/components/projects/ProjectsSection';
 import { useEffect } from 'react';
+import { useSection } from '@/context/SectionContext';
 
 export default function Home() {
   const { setActiveSection } = useSection();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'profil', 'projets', 'contact'];
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const sections = document.querySelectorAll('.section');
+      const scrollPosition = window.scrollY + 100;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { top, bottom } = element.getBoundingClientRect();
-          if (top <= scrollPosition && bottom >= scrollPosition) {
-            setActiveSection(section);
-            break;
-          }
+      sections.forEach((section) => {
+        const sectionElement = section as HTMLElement;
+        const sectionTop = sectionElement.offsetTop;
+        const sectionHeight = sectionElement.offsetHeight;
+        const sectionId = sectionElement.getAttribute('id') || '';
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(sectionId);
         }
-      }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -37,7 +38,6 @@ export default function Home() {
       const navbarHeight = 64; // hauteur de la navbar en pixels
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -98,7 +98,8 @@ export default function Home() {
       <section id="projets" className="section bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950/20 dark:via-background dark:to-indigo-950/20">
         <div className="section-content">
           <h2 className="text-3xl font-bold mb-4 text-primary">Mes Projets</h2>
-          <p className="text-lg text-foreground/80">Quelques projets marquants, avec liens, images ou descriptions. (À personnaliser)</p>
+          <p className="text-lg text-foreground/80 mb-8">Une sélection de mes projets récents, démontrant mes compétences techniques et ma capacité à résoudre des problèmes complexes.</p>
+          <ProjectsSection />
         </div>
       </section>
 
@@ -120,7 +121,6 @@ export default function Home() {
               Télécharger mon CV
             </a>
           </div>
-
           <div className="max-w-3xl mx-auto">
             <ContactForm />
           </div>
