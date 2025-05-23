@@ -7,6 +7,7 @@ import ContactForm from '@/components/ContactForm';
 import ProjectsSection from '@/components/projects/ProjectsSection';
 import { useEffect } from 'react';
 import { useSection } from '@/context/SectionContext';
+import ProfileImage from '@/components/ProfileImage';
 
 export default function Home() {
   const { setActiveSection } = useSection();
@@ -75,13 +76,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/3 aspect-square relative rounded-lg overflow-hidden mt-4 md:mt-0">
-              <Image
-                src="/images/profile.jpg"
-                alt="Toni Do Carmo"
-                fill
-                className="object-cover"
-                priority
-              />
+              <ProfileImage />
             </div>
           </div>
         </div>
