@@ -105,7 +105,7 @@ export default function Home() {
           {/* Bouton de téléchargement CV */}
           <div className="flex justify-center mb-8">
             <a
-              href="/cv-toni-do-carmo.pdf"
+              href="/documents/cv-toni-do-carmo.pdf"
               download
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-base font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg"
             >
