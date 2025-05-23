@@ -7,18 +7,47 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [status, setStatus] = useState('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Ici, vous pouvez ajouter la logique d'envoi du formulaire
-    toast.success("Message envoyé avec succès !");
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setStatus('loading');
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_FORM_ACCESS_ID,
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+        })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus('success');
+        form.reset();
+        toast.success("Message envoyé avec succès !");
+      } else {
+        throw new Error(result.message || "Erreur lors de l'envoi du message");
+      }
+    } catch (error) {
+      setStatus('error');
+      toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
+      console.error('Erreur:', error);
+    } finally {
+      setStatus('idle');
+    }
   };
 
   return (
@@ -28,8 +57,7 @@ export default function ContactForm() {
           <Input
             type="text"
             id="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            name="name"
             placeholder=" "
             className="peer"
             required
@@ -46,8 +74,7 @@ export default function ContactForm() {
           <Input
             type="email"
             id="email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            name="email"
             placeholder=" "
             className="peer"
             required
@@ -65,8 +92,7 @@ export default function ContactForm() {
         <Input
           type="text"
           id="subject"
-          value={formData.subject}
-          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+          name="subject"
           placeholder=" "
           className="peer"
           required
@@ -82,8 +108,7 @@ export default function ContactForm() {
       <div className="relative">
         <Textarea
           id="message"
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          name="message"
           placeholder=" "
           className="peer min-h-[150px] resize-none"
           required
@@ -96,8 +121,8 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <Button type="submit" className="w-full">
-        Envoyer le message
+      <Button type="submit" className="w-full" disabled={status === 'loading'}>
+        {status === 'loading' ? 'Envoi en cours...' : 'Envoyer le message'}
       </Button>
     </form>
   );
