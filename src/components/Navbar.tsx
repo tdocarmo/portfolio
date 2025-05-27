@@ -37,7 +37,7 @@ export default function Navbar() {
       <div className="container flex h-16 max-w-screen-2xl items-center">
         {/* Logo/Nom */}
         <div className="flex items-center">
-          <Link 
+          <Link
             href="/"
             className="flex items-center space-x-2"
           >
@@ -48,19 +48,19 @@ export default function Navbar() {
         {/* Navigation Links & Social Icons */}
         <div className="flex flex-1 items-center justify-end space-x-8">
           <nav className="flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => scrollToSection('profil')}
               className="text-base font-semibold transition-colors hover:text-primary"
             >
               Profil
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('projets')}
               className="text-base font-semibold transition-colors hover:text-primary"
             >
               Projets
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('contact')}
               className="text-base font-semibold transition-colors hover:text-primary"
             >
